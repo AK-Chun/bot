@@ -1,7 +1,7 @@
 var shell = require('shelljs')
 const schedule  =  require ('node-schedule'); 
 let job = schedule.scheduleJob('*/5 * * * * *', () => {
-    if (shell.exec('npx playwright test Damus2.spec.ts').code !== 0){
+    if (shell.exec('npx playwright test Damus.spec2.ts').code !== 0){
         shell.echo('failed');
     }
     console.log(new Date());
