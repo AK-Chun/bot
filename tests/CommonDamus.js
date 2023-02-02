@@ -9,11 +9,17 @@ const imgs = {
   "14": "https://i.postimg.cc/43z300Mz/822f5109d9fcc1d3145d3af9893be5b.jpg",
   "15": "https://i.postimg.cc/PJZhLvj1/01f96be5ce3155c83a4fea6c7770fbc.jpg",
   "discord": "https://discord.gg/SusQJveN",
+  "usDiscord": "https://discord.gg/NSGrDcuY",
+};
+
+const texts = {
+  "discord": "Damus 最大中文 Discord 交流群，进群了解如何发图片，互粉等沟通更自由",
+  "usDiscord": "Feel free to join me, let's talk about Damus in Discord",
 };
 
 (async () => {
     const browser = await chromium.launch({
-      headless: true
+      headless: false
     });  // Or 'chromium' or 'webkit'.
     // Create a new incognito browser context.
     const context = await browser.newContext();
@@ -30,7 +36,7 @@ const imgs = {
     while(true) {
       await page.getByRole('button', { name: 'post' }).click();
       await page.locator('#input-editable').click();
-      await page.locator('#input-editable').fill(`Damus 官方代理中文 Discord 交流群，进群互粉，沟通更自由 \n${imgs[arguments[2]]}`);
+      await page.locator('#input-editable').fill(`${texts[arguments[2]]} \n${imgs[arguments[2]]}`);
       await page.getByRole('button').filter({ hasText: 'send' }).click();
       await wait(5000);
     }
