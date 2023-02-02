@@ -8,10 +8,11 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@playwright/test": "^1.29.2"
+    "@playwright/test": "^1.30.0"
   },
   "dependencies": {
     "node-schedule": "^2.1.1",
+    "playwright": "^1.30.0",
     "shelljs": "^0.8.5"
   }
 }
