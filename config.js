@@ -1,9 +1,9 @@
 module.exports.imgs = {
-    "blockChain" : "图片地址"
+    "blockChain" : "https://s9app.net/ydkc7X.png"
 };
   
 module.exports.texts = {
-    "blockChain": "区块链xxxx",
+    "blockChain": "玩游戏即可销毁代币",
 };
 
 module.exports.botKey = "blockChain";

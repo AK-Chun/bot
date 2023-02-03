@@ -3,7 +3,6 @@ const { imgs, texts } = require('./config');
 const arguments = process.argv;
 
 (async () => {
-  while(true) {
     const browser = await chromium.launch({
       headless: true
     });  // Or 'chromium' or 'webkit'.
@@ -16,28 +15,20 @@ const arguments = process.argv;
       timeout: 0
     });
     if(flag === 1) {
-      await page.getByRole('button', { name: 'generate keys' }).click();
-      await page.getByText('wss://nostr.zebedee.cloud').click();
-      await page.getByText('wss://relay.damus.io').click();
-      await page.getByText('wss://relay.nostr.info').click();
-      await page.getByText('wss://nostr.bitcoiner.social').click();
-      await page.getByText('wss://nostr-pub.semisol.dev').click();
-      await page.getByText('wss://nostr-pub.wellorder.net').click();
-      await page.getByText('wss://nostr.onsats.org remove').click();
-      await page.getByText('wss://nostr-relay.wlvs.space').click();
-      await page.getByText('wss://nostr.walletofsatoshi.com').click();      
+      await page.getByRole('button', { name: 'generate keys' }).click();  
       await page.getByRole('button', { name: 'proceed' }).click();
       await page.waitForTimeout(1000);
       await page.getByRole('button', { name: 'Close' }).click();
       flag++;
     }
+    while(true) {
       await page.getByRole('button', { name: 'post' }).click();
       await page.locator('#input-editable').click();
       await page.locator('#input-editable').fill(`${texts[arguments[2]]} \n${imgs[arguments[2]]}`);
       await page.getByRole('button').filter({ hasText: 'send' }).click();
       await wait(6000);
-      await browser.close();
     }
+    // await browser.close();
 })();
 
 function wait(ms) {
