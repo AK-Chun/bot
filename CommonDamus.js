@@ -1,18 +1,11 @@
 const { chromium } = require('playwright');  // Or 'firefox' or 'webkit'.
+const { imgs, texts } = require('./config');
 const arguments = process.argv;
-
-const imgs = {
-  "blockChain" : "图片地址"
-};
-
-const texts = {
-  "blockChain": "区块链xxxx",
-};
 
 (async () => {
   while(true) {
     const browser = await chromium.launch({
-      headless: false
+      headless: true
     });  // Or 'chromium' or 'webkit'.
     // Create a new incognito browser context.
     const context = await browser.newContext();

@@ -1,11 +1,14 @@
 const fs = require('fs');
 const child_process = require('child_process');
- 
+const arguments = process.argv;
+const { botKey } = require('./config');
+const botNumber = arguments[2] || 5;
+
 
 (async () => {
-    for(var i=0; i<10; i++) {
+    for(var i=0; i<botNumber; i++) {
         console.log('bot', i);
-        var workerProcess = child_process.exec('node CommonDamus.js discord', function (error, stdout, stderr) {
+        var workerProcess = child_process.exec(`node CommonDamus.js ${botKey}`, function (error, stdout, stderr) {
             if (error) {
                 console.log(error.stack);
                 console.log('Error code: '+error.code);
@@ -16,7 +19,7 @@ const child_process = require('child_process');
         });
     
         workerProcess.on('exit', function (code) {
-            var workerProcess = child_process.exec('node CommonDamus.js discord', function (error, stdout, stderr) {
+            var workerProcess = child_process.exec(`node CommonDamus.js ${botKey}`, function (error, stdout, stderr) {
                 if (error) {
                     console.log(error.stack);
                     console.log('Error code: '+error.code);
