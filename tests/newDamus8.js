@@ -3,14 +3,14 @@ const { chromium } = require('playwright');  // Or 'firefox' or 'webkit'.
 (async () => {
   while(true) {
     const browser = await chromium.launch({
-      headless: true
+      headless: false
     });  // Or 'chromium' or 'webkit'.
     // Create a new incognito browser context.
     const context = await browser.newContext();
     let flag = 1;
     // Create a new page in a pristine context.
     const page = await context.newPage();
-    await page.goto('https://astral.ninja/');
+    await page.goto('https://astral.ninja/', {timeout: 0});
     if(flag === 1) {
       await page.getByRole('button', { name: 'generate keys' }).click();
       await page.getByRole('button', { name: 'proceed' }).click();
